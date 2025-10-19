@@ -1,118 +1,44 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chúc mừng 20/10 💐</title>
-
-  <!-- Basic CSP: cho phép chỉ tải script/style từ chính trang và google fonts; img từ https -->
-  <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src https: data:;">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- referrerpolicy=no-referrer NGĂN gửi referrer khi trình duyệt tải avatar -->
-  <img id="avatar" src="https://i.imgur.com/vUJh5eP.jpeg" alt="Avatar" referrerpolicy="no-referrer" crossorigin="anonymous" loading="eager">
+  <img id="avatar" src="https://i.imgur.com/vUJh5eP.jpeg" alt="Avatar">
   <h1 id="mainGreeting">💖 Chúc bạn 20/10 vui vẻ 💖</h1>
-  <p id="subGreeting">Chúc bạn ngày càng xinh đẹp, học giỏi hơn và đỗ NV1 nhé! 🌸</p>
+  <p id="subGreeting">🌸 Chúc bạn ngày càng xinh hownn, học giỏi hơn và đỗ NV1 nhéee 🌸</p>
 
   <script>
-    // -----------------------------
-    // An toàn & xử lý đầu vào
-    // -----------------------------
+    // ⚙️ BƯỚC 1: Lấy tên từ đường link (VD: ?name=Minh%20Anh)
+    const params = new URLSearchParams(window.location.search);
+    const girlName = params.get("name");
 
-    // Lấy param an toàn
-    function getParam(name) {
-      try {
-        const params = new URLSearchParams(window.location.search);
-        return params.has(name) ? params.get(name) : null;
-      } catch (e) { return null; }
+    // ⚙️ BƯỚC 2: Nếu có tên -> chèn vào câu chúc
+    if (girlName) {
+      document.getElementById("mainGreeting").innerHTML = `💖 Chúc ${girlName} 20/10 vui vẻ 💖`;
     }
 
-    // Decode an toàn và giới hạn độ dài chuỗi (tránh payload dài bất thường)
-    function safeDecodeAndLimit(s, maxLen=40) {
-      if (!s) return null;
-      try {
-        const d = decodeURIComponent(s);
-        // Loại bỏ kí tự điều khiển
-        const clean = d.replace(/[\x00-\x1F\x7F]/g, '').trim();
-        return clean.length > maxLen ? clean.slice(0, maxLen) : clean;
-      } catch(e) {
-        // fallback: trả nguyên
-        const fallback = String(s).replace(/[\x00-\x1F\x7F]/g, '').trim();
-        return fallback.length > maxLen ? fallback.slice(0, maxLen) : fallback;
-      }
+    // ⚙️ BƯỚC 3: Tạo hiệu ứng tim rơi
+    const numHearts = 25;
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 3 + Math.random() * 5 + "s";
+      heart.style.fontSize = 10 + Math.random() * 30 + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
     }
 
-    // Kiểm tra URL ảnh hợp lệ (bắt đầu bằng http/https, không chứa "javascript:")
-    function isValidImageUrl(u) {
-      if (!u || typeof u !== 'string') return false;
-      const low = u.trim().toLowerCase();
-      if (!(low.startsWith('http://') || low.startsWith('https://'))) return false;
-      if (low.includes('javascript:')) return false;
-      // tránh URL quá dài
-      if (u.length > 2000) return false;
-      return true;
-    }
-
-    const rawName = getParam('name');
-    const rawAvatar = getParam('avatar');
-
-    const name = safeDecodeAndLimit(rawName, 40);
-    const avatar = (() => {
-      const a = safeDecodeAndLimit(rawAvatar, 150);
-      return isValidImageUrl(a) ? a : null;
-    })();
-
-    // Gán tên an toàn (textContent => không thực thi HTML)
-    if (name) {
-      const h = document.getElementById('mainGreeting');
-      h.textContent = `💖 Chúc ${name} 20/10 vui vẻ 💖`;
-    }
-
-    // Fallback ảnh (public)
-    function setFallback() {
-      const fallback = [
-        "https://i.imgur.com/jfF0D8H.jpg",
-        "https://i.imgur.com/He9f1Va.jpg",
-        "https://i.imgur.com/XHzg3Wq.jpg"
-      ];
-      const imgEl = document.getElementById('avatar');
-      imgEl.src = fallback[Math.floor(Math.random()*fallback.length)];
-      imgEl.onerror = null; // tránh vòng lặp
-    }
-
-    // Đặt avatar nếu hợp lệ; nếu không -> fallback
-    (function applyAvatar() {
-      const imgEl = document.getElementById('avatar');
-      if (avatar) {
-        imgEl.src = avatar;
-        // Nếu avatar không tải được (hết hạn), dùng fallback
-        imgEl.onerror = setFallback;
-      } else {
-        setFallback();
-      }
-    })();
-
-    // Hiệu ứng tim rơi (không gửi dữ liệu đi đâu)
-    (function hearts() {
-      const numHearts = 25;
-      function createHeart() {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.textContent = '💖';
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = 3 + Math.random() * 5 + 's';
-        heart.style.fontSize = 10 + Math.random() * 30 + 'px';
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 8000);
-      }
-      for (let i=0;i<numHearts;i++) createHeart();
-      setInterval(createHeart, 500);
-    })();
-
-    // KHÔNG gửi gì về server, KHÔNG lưu localStorage, KHÔNG ghi log.
+    for (let i = 0; i < numHearts; i++) createHeart();
+    setInterval(createHeart, 500);
   </script>
 </body>
 </html>
+
+
