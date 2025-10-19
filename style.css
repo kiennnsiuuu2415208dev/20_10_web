@@ -68,3 +68,43 @@ p {
     font-size: 3em;
   }
 }
+
+
+/* === NỀN HỒNG CHUYỂN MÀU + TIM RƠI === */
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffb6c1, #ff69b4, #ffc0cb);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Hiệu ứng chuyển màu nền */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Trái tim rơi */
+.heart {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
