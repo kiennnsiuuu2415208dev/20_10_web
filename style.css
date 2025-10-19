@@ -15,19 +15,20 @@ body {
   padding: 60px 20px;
 }
 
-/* 🌈 Chuyển màu nền */
+/* 🌈 Hiệu ứng nền hồng chuyển màu */
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
+/* 🌸 Ảnh đại diện */
 img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 0 25px rgba(255, 105, 180, 0.6);
+  box-shadow: 0 0 25px rgba(255, 105, 180, 0.7);
   margin-bottom: 20px;
   transition: transform 0.3s ease;
 }
@@ -35,28 +36,32 @@ img:hover {
   transform: scale(1.1);
 }
 
-h1, p {
-  color: #ff4da6;
-  text-shadow: 1px 1px 4px rgba(255,255,255,0.8);
-  margin: 8px;
+/* 🌺 Chữ chính */
+h1 {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 2px 2px 8px rgba(255, 0, 100, 0.8), 0 0 10px rgba(255, 255, 255, 0.8);
+  margin-bottom: 10px;
 }
 
-h1 {
-  font-size: 2.2em;
-  font-weight: 700;
-}
+/* 🌼 Dòng chữ phụ */
 p {
-  font-size: 1.5em;
+  font-size: 1.6em;
   font-weight: 500;
+  color: #fff;
+  text-shadow: 1px 1px 6px rgba(255, 0, 150, 0.9), 0 0 6px rgba(255, 255, 255, 0.6);
+  margin-bottom: 30px;
 }
 
 /* 💖 Tim rơi */
 .heart {
   position: absolute;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   font-size: 18px;
   animation: fall linear infinite;
   user-select: none;
+  filter: drop-shadow(0 0 8px rgba(255, 105, 180, 0.8));
 }
 
 @keyframes fall {
@@ -73,6 +78,6 @@ p {
 /* 📱 Responsive */
 @media (max-width: 768px) {
   img { width: 150px; height: 150px; }
-  h1 { font-size: 1.8em; }
+  h1 { font-size: 1.9em; }
   p { font-size: 1.2em; }
 }
