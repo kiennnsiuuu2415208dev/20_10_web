@@ -1,0 +1,70 @@
+/* 🌸 Giao diện chúc mừng 20/10 - Responsive + Hiệu ứng đẹp */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ffe0f0 0%, #ffd1e8 40%, #ffc2f0 100%);
+  text-align: center;
+  padding: 60px 20px;
+  color: #4a004a;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 25px rgba(255, 105, 180, 0.5);
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.1);
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #d63384;
+  text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.6);
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.3em;
+  color: #5a005a;
+  margin-bottom: 30px;
+}
+
+.heart {
+  font-size: 4em;
+  color: #ff3366;
+  animation: beat 0.9s infinite ease-in-out;
+  filter: drop-shadow(0 0 8px rgba(255, 51, 102, 0.8));
+}
+
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+}
+
+/* 🌈 Responsive cho điện thoại */
+@media (max-width: 768px) {
+  img {
+    width: 150px;
+    height: 150px;
+  }
+  h1 {
+    font-size: 1.8em;
+  }
+  p {
+    font-size: 1.1em;
+  }
+  .heart {
+    font-size: 3em;
+  }
+}
