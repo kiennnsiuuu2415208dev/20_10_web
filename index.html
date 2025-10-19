@@ -11,5 +11,33 @@
   <h1>💖 Chúc mừng ngày Phụ Nữ Việt Nam 20/10 💖</h1>
   <p>Chúc bạn luôn xinh đẹp, hạnh phúc và tỏa sáng như bông hoa rực rỡ nhất 🌸</p>
   <div class="heart">❤️</div>
+  <script>
+  const numHearts = 25; // Số lượng trái tim
+  for (let i = 0; i < numHearts; i++) {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = 3 + Math.random() * 5 + "s";
+    heart.style.fontSize = 10 + Math.random() * 30 + "px";
+    document.body.appendChild(heart);
+    // Xoá tim cũ để không bị đầy bộ nhớ
+    setTimeout(() => heart.remove(), 8000);
+  }
+
+  // Lặp lại hiệu ứng tim rơi
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = 3 + Math.random() * 5 + "s";
+    heart.style.fontSize = 10 + Math.random() * 30 + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 8000);
+  }, 500);
+</script>
+
 </body>
 </html>
+
