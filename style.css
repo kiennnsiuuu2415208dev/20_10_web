@@ -6,7 +6,6 @@ body {
   background-size: 400% 400%;
   animation: gradientShift 10s ease infinite;
   overflow: hidden;
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,7 +14,6 @@ body {
   padding: 60px 20px;
 }
 
-/* 🌈 Hiệu ứng nền hồng chuyển màu */
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -23,7 +21,7 @@ body {
 }
 
 /* 🌸 Ảnh đại diện */
-img {
+#avatar {
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -32,7 +30,7 @@ img {
   margin-bottom: 20px;
   transition: transform 0.3s ease;
 }
-img:hover {
+#avatar:hover {
   transform: scale(1.1);
 }
 
@@ -77,45 +75,20 @@ p {
 
 /* 📱 Responsive nâng cao */
 @media (max-width: 1024px) {
-  img { width: 180px; height: 180px; }
+  #avatar { width: 180px; height: 180px; }
   h1 { font-size: 2.2em; }
   p { font-size: 1.4em; }
 }
 
 @media (max-width: 768px) {
-  img { width: 150px; height: 150px; }
+  #avatar { width: 150px; height: 150px; }
   h1 { font-size: 1.8em; }
   p { font-size: 1.2em; }
 }
 
 @media (max-width: 480px) {
-  body {
-    padding: 40px 10px;
-  }
-  img { width: 120px; height: 120px; }
+  body { padding: 40px 10px; }
+  #avatar { width: 120px; height: 120px; }
   h1 { font-size: 1.5em; }
   p { font-size: 1em; }
-}
-
-
-
-
-
-
-/* 🩷 Ảnh nhỏ góc trái */
-#cornerAvatar {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
-  transition: transform 0.3s ease;
-  z-index: 100;
-}
-
-#cornerAvatar:hover {
-  transform: scale(1.15);
 }
