@@ -5,46 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chúc mừng 20/10 💐</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #fff0f6;
+      color: #d63384;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.2rem;
+    }
+  </style>
 </head>
 <body>
-  <img id="avatar" src="https://multilanguage.edu.vn/public/upload/2025/01/meme-tang-hoa-33.webp" alt="Avatar">
-  <h1 id="mainGreeting">💖 Chúc bạn 20/10 vui vẻ 💖</h1>
-  <p id="subGreeting">🌸 Chúc bạn ngày càng xinh hownn, học giỏi hơn và đỗ NV1 nhéee 🌸</p>
-
-  <script>
-    // ⚙️ BƯỚC 1: Lấy tên từ đường link (VD: ?name=Minh%20Anh)
-    const params = new URLSearchParams(window.location.search);
-    const girlName = params.get("name");
-
-    // ⚙️ BƯỚC 2: Nếu có tên -> chèn vào câu chúc
-    if (girlName) {
-      document.getElementById("mainGreeting").innerHTML = `💖 Chúc ${girlName} 20/10 vui vẻ 💖`;
-    }
-
-    // ⚙️ BƯỚC 3: Tạo hiệu ứng tim rơi
-    const numHearts = 25;
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerHTML = "💖";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = 3 + Math.random() * 5 + "s";
-      heart.style.fontSize = 10 + Math.random() * 30 + "px";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 8000);
-    }
-
-    for (let i = 0; i < numHearts; i++) createHeart();
-    setInterval(createHeart, 500);
-  </script>
-
-  <img id="cornerAvatar" src="avt.jpg" alt="Corner Avatar">
-
+  <h1>💖 Chúc bạn 20/10 vui vẻ 💖</h1>
+  <p>🌸 Chúc bạn ngày càng xinh hơn, học giỏi hơn và đỗ NV1 nhé 🌸</p>
 </body>
 </html>
-
-
-
-
-
